@@ -1,0 +1,30 @@
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  apiKey: process.env."sk-proj-kH3e4Yeft2AwGKAKfo4jvtQWzhKE77owgerJmSF1OkEHKKr9ko4Zw4iAJrsCaZscxduKHnx-IHT3BlbkFJwGDxL2iB5LMXl-uW9PotgiU0RUrqKYv0Oczb_JZW9OSXCxX5uWkQXLSQV2OllnaKnEpDRc5~ $,
+});
+
+export async function POST(req: Request) {
+  const body = await req.json();
+
+  const prompt = `
+  Match this user with funding opportunities in Africa:
+  
+  Profile:
+  ${JSON.stringify(body)}
+
+  Return:
+  - Top 5 funding opportunities
+  - Why they match
+  - Application links
+  `;
+
+  const response = await openai.chat.completions.create({
+    model: "gpt-4o-mini",
+    messages: [{ role: "user", content: prompt }],
+  });
+
+  return Response.json({
+    result: response.choices[0].message.content,
+  });
+}
