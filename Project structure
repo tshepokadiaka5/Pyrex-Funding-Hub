@@ -1,0 +1,25 @@
+/ai-funding-hub
+│── /app
+│   │── /api
+│   │   └── match/route.ts
+│   │── /dashboard/page.tsx
+│   │── /login/page.tsx
+│   │── /onboarding/page.tsx
+│   │── /page.tsx
+│
+│── /components
+│   └── Navbar.tsx
+│
+│── /lib
+│   ├── openai.ts
+│   ├── stripe.ts
+│   └── db.ts
+│
+│── /models
+│   └── User.ts
+│
+│── /styles
+│
+│── .env.local
+│── package.json
+│── README.md
